@@ -22,14 +22,14 @@ app.get('/new/:link*', function(req,res){
     function cb(result){
         if(result){
             delete result['_id'];
-            result.slink = 'heroku/' + result.slink;
+            result.slink = 'https://protected-bayou-52951.herokuapp.com/' + result.slink;
             res.send(JSON.stringify(result));
         }
         //else create new db entry for link
         else {
             mongoMod(link, 'create', function(result){
                 delete result['_id'];
-                result.slink = 'heroku/' + result.slink;
+                result.slink = 'https://protected-bayou-52951.herokuapp.com/' + result.slink;
                 res.send(JSON.stringify(result));
             });
         }
